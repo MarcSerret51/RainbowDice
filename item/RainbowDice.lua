@@ -22,6 +22,7 @@ local function UseDice()
                     isInGreyPool = findInList(constants.GRAY_WHITE_POOL, entities[i].SubType)
                     isInPinkPool = findInList(constants.PINK_PURPLE_POOL, entities[i].SubType)
                     isInYellowPool = findInList(constants.ORANGE_YELLOW_POOL, entities[i].SubType)
+                    isInGreenPool = findInList(constants.GREEN_POOL, entities[i].SubType)
 
 
                     if isInRedPool == true then
@@ -36,6 +37,8 @@ local function UseDice()
                         itemToRoll = constants.PINK_PURPLE_POOL[myRNG:RandomInt(#constants.PINK_PURPLE_POOL) + 1]
                     elseif isInYellowPool == true then
                         itemToRoll = constants.ORANGE_YELLOW_POOL[myRNG:RandomInt(#constants.ORANGE_YELLOW_POOL) + 1]
+                    elseif isInGreenPool == true then
+                        itemToRoll = constants.GREEN_POOL[myRNG:RandomInt(#constants.GREEN_POOL) + 1]
                     else
                         Isaac.DebugString('ESTE ITEM NO PERTENECE A NADA AUN')
                     end
