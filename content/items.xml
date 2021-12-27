@@ -1,4 +1,4 @@
 <items gfxroot="gfx/Items/" version="1">
   <!-- Rainbow dice !-->
-  <active description="So gay" gfx="placeholder.png" maxcharges="2" name="Rainbow Dice"/>
+  <active description="LMAO" gfx="placeholder.png" maxcharges="2" name="Rainbow Dice"/>
 </items>
