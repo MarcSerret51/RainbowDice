@@ -1,4 +1,4 @@
-<items gfxroot="gfx/Items/" version="1">
+<items gfxroot="gfx/items/" version="1">
   <!-- Rainbow dice !-->
-  <active description="LMAO" gfx="placeholder.png" maxcharges="2" name="Rainbow Dice"/>
+  <active description="Rerrol to color" gfx="rainbowdice.png" maxcharges="6" name="Rainbow Dice" quality="3"/>
 </items>
