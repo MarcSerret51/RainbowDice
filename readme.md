@@ -31,3 +31,11 @@ And a secret pool with a few items...
 
 Please report any bug or suggestion (change item color pool for example) in the mod workshop forum or in this repository.
 
+### Known bugs
+
+- It can rerroll in items that the player already has or seen
+
+## Credits
+
+Idea and sprite by /u/Meowxis_3
+

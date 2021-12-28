@@ -16,34 +16,53 @@ local function UseDice()
                     -- entities[i].SubType is the item id
                     -- Isaac.DebugString(entities[i].SubType)
                     -- Isaac.DebugString(constants.RED_POOL[2])
-                    isInRedPool = findInList(constants.RED_POOL, entities[i].SubType)
-                    isInBluePool = findInList(constants.BLUE_POOL, entities[i].SubType)
-                    isInFleshPool = findInList(constants.BROWN_FLESH_POOL, entities[i].SubType)
-                    isInGreyPool = findInList(constants.GRAY_WHITE_POOL, entities[i].SubType)
-                    isInPinkPool = findInList(constants.PINK_PURPLE_POOL, entities[i].SubType)
-                    isInYellowPool = findInList(constants.ORANGE_YELLOW_POOL, entities[i].SubType)
-                    isInGreenPool = findInList(constants.GREEN_POOL, entities[i].SubType)
+                    if entities[i].SubType ~= 668 then --prevent to roll dads note
 
+                        isInRedPool = findInList(constants.RED_POOL, entities[i].SubType)
+                        isInBluePool = findInList(constants.BLUE_POOL, entities[i].SubType)
+                        isInFleshPool = findInList(constants.BROWN_FLESH_POOL, entities[i].SubType)
+                        isInGreyPool = findInList(constants.GRAY_WHITE_POOL, entities[i].SubType)
+                        isInPinkPool = findInList(constants.PINK_PURPLE_POOL, entities[i].SubType)
+                        isInYellowPool = findInList(constants.ORANGE_YELLOW_POOL, entities[i].SubType)
+                        isInGreenPool = findInList(constants.GREEN_POOL, entities[i].SubType)
+                        isInMulticolorPool = findInList(constants.MULTICOLOR_POOL, entities[i].SubType)
 
-                    if isInRedPool == true then
-                        itemToRoll = constants.RED_POOL[myRNG:RandomInt(#constants.RED_POOL) + 1]
-                    elseif isInBluePool == true then
-                        itemToRoll = constants.BLUE_POOL[myRNG:RandomInt(#constants.BLUE_POOL) + 1]
-                    elseif isInFleshPool == true then
-                        itemToRoll = constants.BROWN_FLESH_POOL[myRNG:RandomInt(#constants.BROWN_FLESH_POOL) + 1]
-                    elseif isInGreyPool == true then
-                        itemToRoll = constants.GRAY_WHITE_POOL[myRNG:RandomInt(#constants.GRAY_WHITE_POOL) + 1]
-                    elseif isInPinkPool == true then
-                        itemToRoll = constants.PINK_PURPLE_POOL[myRNG:RandomInt(#constants.PINK_PURPLE_POOL) + 1]
-                    elseif isInYellowPool == true then
-                        itemToRoll = constants.ORANGE_YELLOW_POOL[myRNG:RandomInt(#constants.ORANGE_YELLOW_POOL) + 1]
-                    elseif isInGreenPool == true then
-                        itemToRoll = constants.GREEN_POOL[myRNG:RandomInt(#constants.GREEN_POOL) + 1]
-                    else
-                        Isaac.DebugString('ESTE ITEM NO PERTENECE A NADA AUN')
+                        while true do
+                            if isInRedPool == true then
+                                itemToRoll = constants.RED_POOL[myRNG:RandomInt(#constants.RED_POOL) + 1]
+                            elseif isInBluePool == true then
+                                itemToRoll = constants.BLUE_POOL[myRNG:RandomInt(#constants.BLUE_POOL) + 1]
+                            elseif isInFleshPool == true then
+                                itemToRoll = constants.BROWN_FLESH_POOL[myRNG:RandomInt(#constants.BROWN_FLESH_POOL) + 1]
+                            elseif isInGreyPool == true then
+                                itemToRoll = constants.GRAY_WHITE_POOL[myRNG:RandomInt(#constants.GRAY_WHITE_POOL) + 1]
+                            elseif isInPinkPool == true then
+                                itemToRoll = constants.PINK_PURPLE_POOL[myRNG:RandomInt(#constants.PINK_PURPLE_POOL) + 1]
+                            elseif isInYellowPool == true then
+                                itemToRoll = constants.ORANGE_YELLOW_POOL[myRNG:RandomInt(#constants.ORANGE_YELLOW_POOL) + 1]
+                            elseif isInGreenPool == true then
+                                itemToRoll = constants.GREEN_POOL[myRNG:RandomInt(#constants.GREEN_POOL) + 1]
+                            elseif isInMulticolorPool == true then
+                                itemToRoll = constants.MULTICOLOR_POOL[myRNG:RandomInt(#constants.MULTICOLOR_POOL) + 1]
+                            else
+                                itemToRoll = myRNG:RandomInt(719) + 1
+                                Isaac.DebugString('No color pool for this item')
+                            end
+                            -- lmao = player.HasCollectible(CollectibleType.itemToRoll, 1)
+                            -- if lmao == true then
+                            --     Isaac.DebugString('TRUE')
+                            -- end
+                            -- if lmao == false then
+                            --     Isaac.DebugString('FALSE')
+                            -- end
+                            if findInList(constants.BANNED_POOL, itemToRoll) == false then -- if true means that rolled into banned item like negative
+                                Isaac.DebugString('Banned item found, rerolling')
+                                break
+                            end
+                        end
+                        Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.POOF01, -1, entities[i].Position, entities[i].Velocity, PlayerUsed)
+                        entities[i]:ToPickup():Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, itemToRoll, true)
                     end
-                    Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.POOF01, -1, entities[i].Position, entities[i].Velocity, PlayerUsed)
-                    entities[i]:ToPickup():Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, itemToRoll, true)
                 end
             end
         end

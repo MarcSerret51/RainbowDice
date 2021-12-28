@@ -1,21 +1,42 @@
 local M = {}
 M.RED_POOL = {
+    657, --vasculitis
+    702, --vengeful spirit
+    122, --whore of babylon
+    155, --the peeper
+    682, --worm friend
+    79, --the mark
+    80, --the pact
+    21, --compass
+    334, --The body
+    452, --Varicose veins
+    261, --propto
+    30, --mom heels
+    76, -- X-Ray vision
+    556, --sulfur
+    713, --sumptorium
+    396, --ventricle razor
+    45, --yum heart
+    83, --The nail
     105, -- The D6
     97, --The book of sin
     554, --2Spooky
     647, -- 4.5 volts
     230, --abbadon
+    417, --sucubbus
     706, --abyss
+    659, --tropicamide
+    698, --twisted pair
     641, --akeldama
     214, --anemic
     511, --angry fly
     443, --apple
     672, --a pound of flesh
     699, --azazel rage
-    272, --bbf
     506, --backstabber
     704, --berserk
     247, --bff
+    324, --undefined
     391, --betrayal
     616, --birds eye
     119, --blood bag
@@ -59,7 +80,6 @@ M.RED_POOL = {
     269, --headless baby
     724, --Hypercoagulation
     276, --isaacs heart
-    440, --kidney stone
     421, --kidney bean
     40, --kamikaze
     520, --jumper cables
@@ -89,7 +109,6 @@ M.RED_POOL = {
     49, --shoop da whoop
     64, --steam sale
     159, --spirit of the night
-    196, --squeezy
     723, --spindown dice
     623, --sharp key
     9, --skatole
@@ -121,12 +140,19 @@ M.RED_POOL = {
     544, --pointy rib
     515, --mistery gift
     109, --money equals power
-    31, --moms pipstick
+    31, --moms lipstick
     110, --moms contact
     262, --missing page 2
     402, --chaos
+    13, --virus
 }
 M.PINK_PURPLE_POOL = {
+    553, --mucomircosis
+    477, --Void
+    451, --tarot cloth
+    550, --broken shovel (pt1)
+    552, --moms shovel (complete)
+    35, -- The necronomicon
     158, --crystal ball
     65, --anarchist coockbook
     191, --3 dollar bill
@@ -160,26 +186,36 @@ M.PINK_PURPLE_POOL = {
     566, --dream catcher
 }
 M.ORANGE_YELLOW_POOL = {
+    314, --thunder thigs
+    183, --toothpicks
+    732, --moms ring
+    463, --sulfuric acid
+    372, --charged baby
+    333, --the mind
+    101, --The Halo
+    264, --smart fly
     102, -- Mom bottle of pills
     192, --telepathy for dummies
     282, --How to jump
     586, --Starway
     491, --acid baby
     228, --moms perfume
-    582, --rocket in a jar
+    583, --rocket in a jar
+    582, --wavy cap
     689, --glitched crown
-    26, --rotten meat
     357, --box of friends
     665, --guppy eye
     202, --midas touch
     206, --the gillotine
     604, --moms bracalet
-    546, --dadds ring
+    546, --dads ring
     4, --crickets head
     625, --mega mush
-    201, -- mom bottle of pills
+    102, -- mom bottle of pills
     555, -- golden razor
-    501, -- explosivo
+    709, --Suplex!
+    419, --Teleport 2.0
+    401, -- explosivo
     499, --eucharist
     603, --battery pack
     199, --moms key
@@ -205,12 +241,58 @@ M.ORANGE_YELLOW_POOL = {
     404, --farting baby
 }
 M.GRAY_WHITE_POOL = {
+    575, --intruder
+    663, --tooth and nail
+    599, --voodoo head
+    693, -- the swarm
+    645, --tinytoma
+    667, --Strawman
+    716, --keeper sack
+    627, --KNIFE PIECE 2
+    367, --sticky bombs
+    375, --host hat
+    365, --lost fly
+    634, --purgatory
+    32, --wire coat hanger
+    392, --zodiac
+    526, --lil harbingers
+    358, --the wiz
+    341, --torn photo
+    150, --tough love
+    233, --tiny planet
+    108, --wafer
+    249, --Theres options
+    327, --POLAROID
+    328, --NEGATIVE
+    90, --small rock
+    356, --car battery
+    329, --ludovico technique
+    2, --The inner eye
+    180, --black bean
+    345, --synthoil
+    142, --scapular
+    196, --squeezy
+    271, --Mistery sack
+    344, --match book
+    213, --lost contact
+    131, --bomb bag
+    272, --bbf
+    605, --ploop
+    640, --urn of souls
+    653, --vade retro
+    687, --Frind finder
+    516, --sprinkler
+    181, --white pony
+    84, --we need to go deeper
+    290, --The jar
+    93, --the game kid
+    107, -- The pinking shears
     34, -- book of belial
     171, --spider butt
     245, --20/20
     359, --8 inch nails
     683, --bone spurs
-    237, --death touch'
+    237, --death touch
     347, --diplo
     113, --demons baby
     185, --dead dove
@@ -219,7 +301,7 @@ M.GRAY_WHITE_POOL = {
     74, --quarter
     310, --eve mascara
     701, --isaac tomb
-    311, --judash shadow
+    311, --judas shadow
     548, --jaw bone
     434, --jar of flies
     10, --halo of flies
@@ -229,6 +311,7 @@ M.GRAY_WHITE_POOL = {
     77, --my little unicorn
     298, --unnicorn stump
     3, --spoon bender
+    91, --spelunker hat
     708,--stapler
     562, --rock bottom
     400, --spear of destiny
@@ -262,6 +345,7 @@ M.GRAY_WHITE_POOL = {
     388, --key bum
     194, --magic 8 ball
     100, --little steven
+    50, --steven
     99, --little gish
     617, --lodestone
     503, --litle horn
@@ -307,6 +391,7 @@ M.GRAY_WHITE_POOL = {
     476, --D1
     316, --cursed eye
     482, --clicker
+    315, --strange attractor
     160, --crack the sky
     216, --ceremonial robes
     263, --clear rune
@@ -337,10 +422,14 @@ M.GRAY_WHITE_POOL = {
     465, --analog stick
     564, --a bar of soap
     116, --nine volt
-    89, --spider byte
+    89, --spider bite
     189, --SMB super fan
     403, --spider mod
+    533, --trisagion
+    524, --technology zero
     244, --tech.5
+    68, --technology
+    152, --technology 2
     95, --robo-baby
     267, --robo-baby 2.0
     86, --monstro tooth
@@ -355,8 +444,29 @@ M.GRAY_WHITE_POOL = {
     675, --cracked orb
     94, --sack of pennies
     130, --a pony
+    569, --blood oath
+}
 
 M.BROWN_FLESH_POOL = {
+    721, --TMT TRAINER
+    697, --vanishing twin
+    444, --a pencil
+    731, --stye
+    707, --stupper
+    626, --knife piece 1
+    54, --treasure map
+    20, --transcendence
+    440, --kidney stone
+    104, --parasite
+    63, --the battery
+    28, --the beld
+    138, --stigmata
+    635, --Stitches
+    363, --sworn protector
+    349, --Wooden nickel
+    27, --wooden spoon
+    36, --The poop
+    66, --the hourglass
     33, -- The bible
     111, --the bean
     38, --tammy head
@@ -434,7 +544,7 @@ M.BROWN_FLESH_POOL = {
     504, --brown nugget
     198, --box
     624, --booster pack
-    7, --blood of the martir
+    7, --blood of the martyr
     619, --birthright
     664, --binge eater
     279, --big fan
@@ -445,7 +555,6 @@ M.BROWN_FLESH_POOL = {
     334, --match book
     257, --fire mind
     29, --moms underwear
-    252, --little baggy
     685, --jar of wisps
     204, --fany pack
     250, --bogo bombs
@@ -466,7 +575,7 @@ M.BROWN_FLESH_POOL = {
     175, --dads key
     16, --raw liver
     523, --moving box
-    251, --started deck
+    251, --starter deck
     642, --magic skin
     343, --latch key
     485, --crooked penny
@@ -474,20 +583,34 @@ M.BROWN_FLESH_POOL = {
     148, --infestation
     527, --mr me
     207, --ball of bandages
+    92, --super bandage
     458, --belly button
     677, --astral projection
     136, --best friend
-    467, --finger
+    467, --finger!
     351, --mega bean
     227, --piggy bank
 }
 M.BLUE_POOL = {
+    730, --glass eye
+    492, --YO LISTEN!
+    397, --tractorn beam
+    243, --trinity shield
+    335, --the soul
+    98, --The relic
+    303, --virgo
+    151, --the mulligan
+    299, --taurus
+    522, --Telekinesis
+    383, --Tear detonator
+    592, --terra
+    591, --venus
+    596, --uranus
     164, --The candle
     338, --The boomerang
     44, --teleport
     323, --Isaac tears
     651, --bethelen
-    516, --sprinkler
     588, --sol
     674, --spirit shakeless
     211, --spiderbaby
@@ -496,11 +619,11 @@ M.BLUE_POOL = {
     376, --restock
     448, --shard of glass
     597, --neptunus
+    590, --mercurius
     425, --night light
     220, --sad bombs
     673, --redemption
     686, --soul locket
-    553, --mucomircosis
     507, --sharp straw
     169, --poly
     280, --sissy long legs
@@ -508,6 +631,7 @@ M.BLUE_POOL = {
     593, --mars
     318, --gemini
     313, -- holy mantle
+    178, --holy water
     430, --papa fly
     297, --pandoras box
     571, --orphan socks
@@ -574,6 +698,7 @@ M.BLUE_POOL = {
     302, --leo
 }
 M.GREEN_POOL = {
+    26, --rotten meat
     11, -- 1 up!
     18, --a dollar
     284, -- D4
@@ -596,6 +721,29 @@ M.GREEN_POOL = {
     639, --Yuck heart
     154, --chemical peel
     103, --the commom cold
+
+}
+
+M.MULTICOLOR_POOL = {
+    655, --SPIN TO WIN
+    331, --godhead
+    252, --little baggy
+    258, --missing no.
+    174, --rainbow baby
+    405, --GB bug
+    528, --Angelic prism
+}
+
+M.BANNED_POOL = {
+    327, --POLAROID
+    328, --NEGATIVE
+    627, --knife piece 2
+    238, --key piece 1
+    239, --key piece 2
+    668, --dads note
+    550, --broken shovel 1
+    551, --broken shovel 2
+    552, --broken shovel complete
 
 }
 return M
