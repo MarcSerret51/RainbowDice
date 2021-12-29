@@ -27,6 +27,7 @@ local function UseDice()
                         isInGreenPool = findInList(constants.GREEN_POOL, entities[i].SubType)
                         isInMulticolorPool = findInList(constants.MULTICOLOR_POOL, entities[i].SubType)
                         local color
+                        local counter = 1
                         while true do
                             if isInRedPool == true then
                                 color = Color(255, 10, 10, 0.3)
@@ -58,19 +59,17 @@ local function UseDice()
                                 itemToRoll = constants.MULTICOLOR_POOL[myRNG:RandomInt(#constants.MULTICOLOR_POOL) + 1]
                             else
                                 itemToRoll = myRNG:RandomInt(719) + 1 --if the user rolls a modded item it rolls to a random item
-                                -- Isaac.DebugString('No color pool for this item')
                             end
-                            -- lmao = player.HasCollectible(CollectibleType.itemToRoll, 1)
-                            -- if lmao == true then
-                            --     Isaac.DebugString('TRUE')
-                            -- end
-                            -- if lmao == false then
-                            --     Isaac.DebugString('FALSE')
-                            -- end
-                            if findInList(constants.BANNED_POOL, itemToRoll) == false then -- if true means that rolled into banned item like negative
-                                -- Isaac.DebugString('Good item found, not rolling')
+                            if findInList(constants.BANNED_POOL, itemToRoll) == false and player:HasCollectible(itemToRoll) == false then -- if true means that rolled into banned item like negative
+                                -- If we enter this statement means that all conditions are OK, we give this id to the user
                                 break
                             end
+                            counter = counter + 1
+                            if counter > 20 then
+                                itemToRoll = myRNG:RandomInt(719) + 1 --if the selection takes a lot of tries we give a random item
+                                break -- no one is going to get in this situation
+                            end
+                            Isaac.DebugString(counter)
                         end
                         local effect = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.POOF01, -1, entities[i].Position, entities[i].Velocity, PlayerUsed) -- The animation
                         effect:SetColor(color, 60, 1, false, true)
