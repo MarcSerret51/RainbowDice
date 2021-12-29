@@ -26,27 +26,39 @@ local function UseDice()
                         isInYellowPool = findInList(constants.ORANGE_YELLOW_POOL, entities[i].SubType)
                         isInGreenPool = findInList(constants.GREEN_POOL, entities[i].SubType)
                         isInMulticolorPool = findInList(constants.MULTICOLOR_POOL, entities[i].SubType)
-
+                        local color
                         while true do
                             if isInRedPool == true then
+                                color = Color(255, 10, 10, 0.3)
                                 itemToRoll = constants.RED_POOL[myRNG:RandomInt(#constants.RED_POOL) + 1]
                             elseif isInBluePool == true then
+                                color = Color(0, 21, 255, 0.3)
                                 itemToRoll = constants.BLUE_POOL[myRNG:RandomInt(#constants.BLUE_POOL) + 1]
                             elseif isInFleshPool == true then
+                                color = Color(1, 1, 1, 0.3)
+                                color:SetColorize(19, 15, 12, 1)
                                 itemToRoll = constants.BROWN_FLESH_POOL[myRNG:RandomInt(#constants.BROWN_FLESH_POOL) + 1]
                             elseif isInGreyPool == true then
+                                color = Color(107, 107, 107, 0.1)
                                 itemToRoll = constants.GRAY_WHITE_POOL[myRNG:RandomInt(#constants.GRAY_WHITE_POOL) + 1]
                             elseif isInPinkPool == true then
+                                color = Color(122, 10, 76, 0.3)
                                 itemToRoll = constants.PINK_PURPLE_POOL[myRNG:RandomInt(#constants.PINK_PURPLE_POOL) + 1]
                             elseif isInYellowPool == true then
+                                -- color = Color(255, 255, 10, 0.3)
+                                color = Color(1, 1, 1, 0.3)
+                                color:SetColorize(232, 220, 10, 0.4)
                                 itemToRoll = constants.ORANGE_YELLOW_POOL[myRNG:RandomInt(#constants.ORANGE_YELLOW_POOL) + 1]
                             elseif isInGreenPool == true then
+                                color = Color(10, 255, 10, 0.3)
                                 itemToRoll = constants.GREEN_POOL[myRNG:RandomInt(#constants.GREEN_POOL) + 1]
                             elseif isInMulticolorPool == true then
+                                color = Color(1, 1, 1, 0.3)
+                                color:SetColorize(4, 0, 4, 1)
                                 itemToRoll = constants.MULTICOLOR_POOL[myRNG:RandomInt(#constants.MULTICOLOR_POOL) + 1]
                             else
-                                itemToRoll = myRNG:RandomInt(719) + 1
-                                Isaac.DebugString('No color pool for this item')
+                                itemToRoll = myRNG:RandomInt(719) + 1 --if the user rolls a modded item it rolls to a random item
+                                -- Isaac.DebugString('No color pool for this item')
                             end
                             -- lmao = player.HasCollectible(CollectibleType.itemToRoll, 1)
                             -- if lmao == true then
@@ -56,12 +68,13 @@ local function UseDice()
                             --     Isaac.DebugString('FALSE')
                             -- end
                             if findInList(constants.BANNED_POOL, itemToRoll) == false then -- if true means that rolled into banned item like negative
-                                Isaac.DebugString('Banned item found, rerolling')
+                                -- Isaac.DebugString('Good item found, not rolling')
                                 break
                             end
                         end
-                        Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.POOF01, -1, entities[i].Position, entities[i].Velocity, PlayerUsed)
-                        entities[i]:ToPickup():Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, itemToRoll, true)
+                        local effect = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.POOF01, -1, entities[i].Position, entities[i].Velocity, PlayerUsed) -- The animation
+                        effect:SetColor(color, 60, 1, false, true)
+                        entities[i]:ToPickup():Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, itemToRoll, true) -- The roll
                     end
                 end
             end
@@ -69,6 +82,7 @@ local function UseDice()
     end
 end
 
+-- Returns true if the element is on the list. False otherwise
 function findInList(list, toFind) -- find element v of l satisfying f(v)
     for _,v in pairs(list) do
         if v == toFind then
@@ -80,7 +94,7 @@ end
 
 
 function item:Init(mod)
-    mod:AddCallback(ModCallbacks.MC_USE_ITEM, UseDice, registry.RainbowDice) -- USE_ITEM lets us give a third arg of a filter of what collectible we want to detect got used.
+    mod:AddCallback(ModCallbacks.MC_USE_ITEM, UseDice, registry.RainbowDice) --Use active item callback
 end
 
 return item
